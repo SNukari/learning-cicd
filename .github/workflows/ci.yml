@@ -25,7 +25,7 @@ jobs:
         with:
           path: ./
           # base and head values are left empty so trufflehog detects automatically brances and commits
-          extra_args: --debug --only-verified # remove --only-verified to see all potential secrets, including false positives
+          extra_args: --debug  # remove --only-verified to see all potential secrets, including false positives
 
   python-security-scan:
     runs-on: ubuntu-latest
