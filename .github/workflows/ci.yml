@@ -25,7 +25,7 @@ jobs:
         with:
           path: ./
           # base and head values are left empty so trufflehog detects automatically brances and commits
-          extra_args: --debug --only-verified
+          extra_args: --debug --only-verified # remove --only-verified to see all potential secrets, including false positives
 
   python-security-scan:
     runs-on: ubuntu-latest
@@ -52,9 +52,12 @@ jobs:
       # This scans your requirements.txt for known vulnerabilities
       run: pip-audit -r requirements.txt
 
-  test:
+  python-test:
     needs: python-security-scan # The tests only run if the security scan passes!
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./python-weather-app
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -78,7 +81,7 @@ jobs:
 
       - name: Run Cppcheck (SAST for C++)
         # This checks for memory leaks and buffer overflows
-        run: cppcheck --enable=all --error-exitcode=1 .
+        run: cppcheck --enable=all --suppress=missingIncludeSystem --error-exitcode=1 .
 
       - name: Build C++ App
         run: |
