@@ -1,4 +1,4 @@
-name: Python CI Pipeline
+name: DevSecOps Pipeline
 
 on:
   push:
@@ -7,9 +7,8 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build-and-test:
+  security-scan:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -19,11 +18,27 @@ jobs:
       with:
         python-version: '3.9'
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install pytest
+    - name: Install Security Tools
+      run: pip install bandit safety
 
-    - name: Run tests with pytest
-    # This is the moment of truth!
-      run: pytest test_app.py
+    - name: Run Bandit (SAST)
+      # Scans code for common security issues
+      run: bandit -r . -f txt
+
+    - name: Run Safety (Dependency Scan)
+      # Checks requirements.txt against a vulnerability database
+      # Note: We'll create a requirements.txt in the next step
+      run: |
+        pip freeze > requirements.txt
+        safety check -r requirements.txt
+
+  test:
+    needs: security-scan # The tests only run if the security scan passes!
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Run Pytest
+      run: |
+        pip install pytest
+        pytest test_app.py
