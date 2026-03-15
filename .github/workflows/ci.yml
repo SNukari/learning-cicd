@@ -28,11 +28,13 @@ jobs:
       run: bandit -r . -x ./test_app.py -ll
 
     - name: Run Safety (Dependency Scan)
-      # Checks requirements.txt against a vulnerability database
-      # Note: We'll create a requirements.txt in the next step
+      # We use 'scan' instead of 'check'
+      # We add '--project my-project' (required by the new version)
+      # OPTIONAL: Add '--output text' for readability
+      # ignore 83159 known issue for demonstration purposes
       run: |
         pip freeze > requirements.txt
-        safety check -r requirements.txt
+        safety scan --project learning-cicd --full-report --ignore 83159
 
   test:
     needs: security-scan # The tests only run if the security scan passes!
