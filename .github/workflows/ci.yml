@@ -19,22 +19,15 @@ jobs:
         python-version: '3.9'
 
     - name: Install Security Tools
-      run: pip install bandit safety
+      run: pip install bandit pip-audit
 
     - name: Run Bandit (SAST)
-      # Scans code for common security issues
-      # -x excludes the test file
-      # -ll means "Only report Medium or High severity issues"
+      # Excluding tests and ignoring low-severity "assert" warnings
       run: bandit -r . -x ./test_app.py -ll
 
-    - name: Run Safety (Dependency Scan)
-      # We use 'scan' instead of 'check'
-      # We add '--project my-project' (required by the new version)
-      # OPTIONAL: Add '--output text' for readability
-      # ignore 83159 known issue for demonstration purposes
-      run: |
-        pip freeze > requirements.txt
-        safety scan --project learning-cicd --full-report --ignore 83159
+    - name: Run pip-audit (SCA)
+      # This scans your requirements.txt for known vulnerabilities
+      run: pip-audit -r requirements.txt
 
   test:
     needs: security-scan # The tests only run if the security scan passes!
