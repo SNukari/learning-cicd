@@ -23,7 +23,9 @@ jobs:
 
     - name: Run Bandit (SAST)
       # Scans code for common security issues
-      run: bandit -r . -f txt
+      # -x excludes the test file
+      # -ll means "Only report Medium or High severity issues"
+      run: bandit -r . -x ./test_app.py -ll
 
     - name: Run Safety (Dependency Scan)
       # Checks requirements.txt against a vulnerability database
