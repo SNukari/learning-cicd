@@ -28,6 +28,7 @@ jobs:
           extra_args: --debug --only-verified # remove --only-verified to see all potential secrets, including false positives
 
   python-security-scan:
+    needs: secret-scan
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -67,6 +68,7 @@ jobs:
         pytest test_app.py
   
   cpp-build-and-scan:
+    needs: secret-scan
     runs-on: ubuntu-latest
     defaults:
       run:
