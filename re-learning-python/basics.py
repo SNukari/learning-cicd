@@ -85,6 +85,7 @@ for boolean: bool = boolean -> true or false
 for binary types: bytes, bytearray, memoryview  -> for handling binary data
 and none type: NoneType -> represents absence of value or null value
 """
+print("data types: ")
 x = "Hello World"
 print(x, type(x))
 x = 20
@@ -117,6 +118,7 @@ x = None
 print(x, type(x))
 
 # you can convert datatypes for example numbers like this:
+print("datatype conversions: ")
 x = 1
 y = 4.5
 z = 2j  # complex cannot be converted to other number types but others can be made to complex
@@ -131,9 +133,9 @@ print(c, type(c))
 
 # python does not have random() function like other programming languages do so you need to import random module to use random functions.
 import random # typically module imports are done at the beginning of the code.
-
+print("random number: ")
 print(random.randrange(1, 10)) # random number between 1 and 9
-
+print("multilines and strings: ")
 # earlier i noted the multiline comment, it can also be used as multiline string when assigned to a variable
 a = """multiline text going hard,
 and keeps going on and on,
@@ -178,6 +180,7 @@ print(b[-5:-2]) # prints "ung"
 print(b[-7:])
 
 #modifying strings:
+print("modifying strings: ")
 a = " I am hungry "
 print(a.upper()) #prints uppercase version of string
 print(a.lower()) #prints lowercase
@@ -211,11 +214,12 @@ Escape characters:
 \t -> tab
 \b -> backspace
 \f -> form feed
-\ooo -> octal value
-\xhh -> hexadecimal value
-"""
+\\ooo -> octal value
+\\xhh -> hexadecimal value"""
+# then we have string methods
 
-""" more in w3schools
+"""
+more in w3schools
 string methods:
 capitalize()	Converts the first character to upper case
 casefold()	Converts string into lower case
@@ -263,5 +267,197 @@ translate()	Returns a translated string
 upper()	Converts a string into upper case
 zfill()	Fills the string with a specified number of 0 values at the beginning"""
 
+#booleans are pretty much same as in other programming languages -> True and False depending on the condition of statement.
+print("boolean values: ")
+print(5 > 2) # <- true
+print(5 < 2) # <- false
 
+a = 5
+b = 100
 
+if b > a:
+   print("b is greater than a")
+else:
+   print("b is not greater than a")
+
+#we can also evaluate values and variables
+print(bool("Hello")) # should return true because string is not empty
+print(bool(5)) # should return true because number is not zero
+print(bool("")) # empty string returns false
+print(bool(0))  # zero returns false same goes with any empty variable like lists, tuples, sets, etc.
+
+class classtwo():
+   def __len__(self):
+      return 0
+   
+myobject = classtwo()
+print(bool(myobject)) # returns false because class __len__ method returns 0 therefore myobject is seen as empty value
+ #functions can also return boolean values: return True this can be used in if statements
+def myfunction():
+   return True # we can just return true or false and if else statemnt will work based on that value
+if myfunction():
+   print("YES! it is true")
+else:
+   print("NO! it is false")
+
+# then we also can check if object is certain datatype using isinstance() function:
+x = 20
+print(isinstance(x, int)) # we are checking if x is instance of int datatype. isinstance returns true or false 
+
+#Operators are similiar to other programming languages:
+# we have arithmetic operators: +, -, *, /, %, **(as exponential), //(as floor division)
+print("arithmetic operators: ")
+sum1 = 3 + 2
+sum2 = sum1 + 20
+print(sum2)
+subtract1  = sum2 - 10
+print(subtract1)
+multiply1 = subtract1 * 2
+print(multiply1)
+divide1 = multiply1 / 2
+print(divide1)
+modulus1 = divide1 % 3
+print(modulus1)
+expotential1 = 2 ** 3
+print(expotential1)
+floordivision1 = 7 // 3
+print(floordivision1) # rounds down the result to nearest whole number. division returns float but floordivision returns integer
+
+#then there is assigment operators: =, +=, -=, *=, /=, %=, **=, //=, &=, |=, ^=, >>=, <<=, :=
+print("assigment operators: ")
+x = 5
+x += 3 #same as x = x + 3
+print(x)
+x -= 3 #same as x = x-3
+print(x)
+x *= 3 #same as x = x *3
+print(x)
+x /= 3 #same as x = x/3
+print(x)
+x %= 3 #same as x = x%3
+print(x)
+x **= 3 #same as x = x**3
+print(x)
+x //= 3 #same as x = x//3
+print(x)
+
+# walrus operator := is used to assign values to variables as part of a larger expression. from w3schools:
+numbers = [1, 2, 3, 4, 5]
+
+if (count := len(numbers)) > 3:
+    print(f"List has {count} elements")
+
+print("comparison operators: ")
+#comparisons are ==, !=, >, <, >=, <=
+x = 10
+y = 7
+print(x == y) #returns true or false
+print(x != y)
+print(x > y)
+print(x < y)
+print(x >= y)
+print(x <= y)
+
+#comparison operators can be chained:
+x = 3
+print(1 < x < 5) #returns true because it makes sense
+print(1 > x < 5) #returns false
+
+print("logical operators: ")
+# and, or and not also
+a = 5
+print(a > 3 and a < 10) #should be true
+print(a > 3 or a < 4)  #should be true only one of the conditions needs to be true
+print(not(a > 3 and a < 10)) #should be false because normal codition is true but we negate it with not so it returns false
+
+print("identity operators: ")
+#identity opreators is and is not compare memory locations of two objects adn returns true if the are the same
+#note value is not same as identity, two different objects can have same value but they are not the same object in memory
+x = ["apple", "banana", "cherry"]
+y = ["apple", "banana", "cherry"]
+print(x == y) #this is true because == compares values of x and y
+print(x is y) #this is false because they are different objecrs in memory
+print(x is not y) #true
+z = y
+print(z is y) #true because z and y are same object in memory
+
+print("membership operators: ")
+#in and not in are used to test if a sequence is present in object
+x = ["apple", "banana", "cherry"]
+print("banana" in x) #returns true because banana is in list x
+print("grape" in x) #returns false
+print("banana" not in x) # false because it is in x
+print("grape" not in x) #true
+#membership operators work also in strings and you can check if certain character or phrase is in or is not in string
+
+print("bitwise operators: ")
+# bitwise operators are used to compare binary numbers, they are &, |, ^, ~, <<, >> 
+print(5 & 3) #bitwise and compares bitvalues of 5 and 3 and returns a value where both bits are 1. in this case 5 is 0101 and 3 is 0011 so the result is 0001 whivs is 1
+#note similiar to IP address and subnet mask calculations
+print(5 | 3) #bitwise or needs atleast on bit to be 1 to return 1 so the result is 0101 and 0011 which is 0111 = 7
+print(6 ^ 3) #bitwise xor returns 1 if bits are different if both are 1 or 0 it returns 0 so 6 is 0110 and 3 is 0011 so diff is 0101
+
+#when it comes to operator precedence, parentheses have highest precedence then exponentiation, multiplication, division, modulus and floor division
+#more about the precedence order: https://www.w3schools.com/python/python_operators_precedence.asp
+
+print("PYTHON LISTS: ")
+#i've already used lists in examples but lets go through more deeply and figure out what is difference between lists, tuples, sets and dictionaries.
+#so typical list stores multiple items in single variable. they are ordered, changeable and allow duplicate values.
+mylist = ["banana", "kiwi", "strawberry"]
+print(mylist)
+#items in list has index values starting from [0], [1], [2] and so on. if we want to start end of the list we can use negative indexing like [-1] and so on.
+print(mylist[0])
+print(mylist[-1])
+#since list is indexed it can contain same value multiple times.
+#to see number of items in list we can check it with len() function:
+print(len(mylist))
+#lists can also contain any datatypes, lits are its own datatype in python for example
+mylist2 = ["apple", 1, True, "banana", 3.14, mylist]
+print(mylist2)
+print(type(mylist2))
+#you can also use list constructor to make list
+mylist3 = list(("apple", "mango", "cherry"))
+print(mylist3)
+"""
+List is a collection which is ordered and changeable. Allows duplicate members.
+Tuple is a collection which is ordered and unchangeable. Allows duplicate members.
+Set is a collection which is unordered, unchangeable*, and unindexed. No duplicate members. but you can remove and add items
+Dictionary is a collection which is ordered** and changeable. No duplicate members."""
+#you can also slice lists like we did earlier with strings and string formats
+mylist4 = ["horse", "dog", "cat", "moose", "reindeer", "fly", "whale", "bird"]
+print(mylist4[2:5]) #check range from 2 to 5 but 5 is not included so it should show cat -> reindeer
+#same as before if we leave starting value empty it begins from the first index of the list
+print(mylist4[:4])
+#and other way around. we can set starting index  and leave rest empty to fo from that index till the end of the list items
+print(mylist4[3:])
+#and works same way with the negatives - from starting the end of the list
+print(mylist4[-4:-1])
+#also can check in and not in if the value is in the list
+if "horse" in mylist4:
+   print("yup 'horse' is in the list")
+
+print(mylist4)
+print("changing list values of items: ")
+mylist4[3] = "crocodile"
+print(mylist4)
+mylist4[1:3] = ["seagul", "ant"]
+print(mylist4)
+mylist4[1:2] = ["bear", "pig", "lion"] #if you add more items than you are replacing it will add them automatically in the list increasing lengt of the list
+print(mylist4)
+#if we want to add values without replacing we can use insert() method
+mylist4.insert(3, "Eagle")
+print(mylist4)
+
+#adding items to the end of the list using append() method
+mylist4.append("wolf")
+print(mylist4)
+#if we want to add elemets from another list to another, there is extend() method
+mylist.extend(mylist3)
+print(mylist)
+#extend method does not haveto append lists, it can be any iterable object like tuplets,  sets, dictionaries etc.
+mytuple = ("blueberry", "dragonfruit")
+mylist.extend(mytuple)
+print(mylist)
+
+#removing items
+print("removing items from list: ")
