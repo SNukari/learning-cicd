@@ -85,7 +85,7 @@ for boolean: bool = boolean -> true or false
 for binary types: bytes, bytearray, memoryview  -> for handling binary data
 and none type: NoneType -> represents absence of value or null value
 """
-print("data types: ")
+print("data types: \n")
 x = "Hello World"
 print(x, type(x))
 x = 20
@@ -118,7 +118,7 @@ x = None
 print(x, type(x))
 
 # you can convert datatypes for example numbers like this:
-print("datatype conversions: ")
+print("datatype conversions: \n")
 x = 1
 y = 4.5
 z = 2j  # complex cannot be converted to other number types but others can be made to complex
@@ -135,7 +135,7 @@ print(c, type(c))
 import random # typically module imports are done at the beginning of the code.
 print("random number: ")
 print(random.randrange(1, 10)) # random number between 1 and 9
-print("multilines and strings: ")
+print("multilines and strings: \n")
 # earlier i noted the multiline comment, it can also be used as multiline string when assigned to a variable
 a = """multiline text going hard,
 and keeps going on and on,
@@ -180,7 +180,7 @@ print(b[-5:-2]) # prints "ung"
 print(b[-7:])
 
 #modifying strings:
-print("modifying strings: ")
+print("modifying strings: \n")
 a = " I am hungry "
 print(a.upper()) #prints uppercase version of string
 print(a.lower()) #prints lowercase
@@ -268,7 +268,7 @@ upper()	Converts a string into upper case
 zfill()	Fills the string with a specified number of 0 values at the beginning"""
 
 #booleans are pretty much same as in other programming languages -> True and False depending on the condition of statement.
-print("boolean values: ")
+print("\n boolean values: \n")
 print(5 > 2) # <- true
 print(5 < 2) # <- false
 
@@ -306,7 +306,7 @@ print(isinstance(x, int)) # we are checking if x is instance of int datatype. is
 
 #Operators are similiar to other programming languages:
 # we have arithmetic operators: +, -, *, /, %, **(as exponential), //(as floor division)
-print("arithmetic operators: ")
+print("arithmetic operators: \n")
 sum1 = 3 + 2
 sum2 = sum1 + 20
 print(sum2)
@@ -324,7 +324,7 @@ floordivision1 = 7 // 3
 print(floordivision1) # rounds down the result to nearest whole number. division returns float but floordivision returns integer
 
 #then there is assigment operators: =, +=, -=, *=, /=, %=, **=, //=, &=, |=, ^=, >>=, <<=, :=
-print("assigment operators: ")
+print("assigment operators: \n")
 x = 5
 x += 3 #same as x = x + 3
 print(x)
@@ -347,7 +347,7 @@ numbers = [1, 2, 3, 4, 5]
 if (count := len(numbers)) > 3:
     print(f"List has {count} elements")
 
-print("comparison operators: ")
+print("comparison operators: \n")
 #comparisons are ==, !=, >, <, >=, <=
 x = 10
 y = 7
@@ -363,14 +363,14 @@ x = 3
 print(1 < x < 5) #returns true because it makes sense
 print(1 > x < 5) #returns false
 
-print("logical operators: ")
+print("logical operators: \n")
 # and, or and not also
 a = 5
 print(a > 3 and a < 10) #should be true
 print(a > 3 or a < 4)  #should be true only one of the conditions needs to be true
 print(not(a > 3 and a < 10)) #should be false because normal codition is true but we negate it with not so it returns false
 
-print("identity operators: ")
+print("identity operators: \n")
 #identity opreators is and is not compare memory locations of two objects adn returns true if the are the same
 #note value is not same as identity, two different objects can have same value but they are not the same object in memory
 x = ["apple", "banana", "cherry"]
@@ -381,7 +381,7 @@ print(x is not y) #true
 z = y
 print(z is y) #true because z and y are same object in memory
 
-print("membership operators: ")
+print("membership operators: \n")
 #in and not in are used to test if a sequence is present in object
 x = ["apple", "banana", "cherry"]
 print("banana" in x) #returns true because banana is in list x
@@ -390,7 +390,7 @@ print("banana" not in x) # false because it is in x
 print("grape" not in x) #true
 #membership operators work also in strings and you can check if certain character or phrase is in or is not in string
 
-print("bitwise operators: ")
+print("bitwise operators: \n")
 # bitwise operators are used to compare binary numbers, they are &, |, ^, ~, <<, >> 
 print(5 & 3) #bitwise and compares bitvalues of 5 and 3 and returns a value where both bits are 1. in this case 5 is 0101 and 3 is 0011 so the result is 0001 whivs is 1
 #note similiar to IP address and subnet mask calculations
@@ -400,7 +400,7 @@ print(6 ^ 3) #bitwise xor returns 1 if bits are different if both are 1 or 0 it 
 #when it comes to operator precedence, parentheses have highest precedence then exponentiation, multiplication, division, modulus and floor division
 #more about the precedence order: https://www.w3schools.com/python/python_operators_precedence.asp
 
-print("PYTHON LISTS: ")
+print("\n PYTHON LISTS:  \n")
 #i've already used lists in examples but lets go through more deeply and figure out what is difference between lists, tuples, sets and dictionaries.
 #so typical list stores multiple items in single variable. they are ordered, changeable and allow duplicate values.
 mylist = ["banana", "kiwi", "strawberry"]
@@ -437,8 +437,8 @@ if "horse" in mylist4:
    print("yup 'horse' is in the list")
 
 print(mylist4)
-print("changing list values of items: ")
-mylist4[3] = "crocodile"
+print("changing list values of items:  \n")
+mylist4[3] = "crocodile" #replces
 print(mylist4)
 mylist4[1:3] = ["seagul", "ant"]
 print(mylist4)
@@ -459,5 +459,238 @@ mytuple = ("blueberry", "dragonfruit")
 mylist.extend(mytuple)
 print(mylist)
 
-#removing items
+#removing items from lists can be done using remove() method remove method removes first item with specified value if there happens to be dublicates
 print("removing items from list: ")
+
+mylist.remove("blueberry")
+print(mylist)
+ # but if you want to remove by index from the list you can use pop() method
+
+mylist.pop(1)
+print(mylist)
+
+#you can also use del keyword to delete specified index with del mylisy[0] or just delete whole list with: del mylist
+#then there is also clear() method which empties the entire list content. list itself still remains
+
+print("Looping through list: ")
+# lets use for loop to go through mylist until it reaches the end of the list and use membership operator in to check the items inside mylist
+for x in mylist:
+   print(x)
+
+print("looping using index numbers: ")
+#if we want to go through by index number use range() and len() functions
+for i in range(len(mylist)):
+   print(mylist[i])
+#so here we for loop like earlier through the list but we use the range() and len() to determine how many items are in the list.
+#to open up it more how the loop works lets print the len(mylist) to show first how many items are in the list and then go thgough range of that length
+print(len(mylist))
+print(range(len(mylist)))
+
+print("looping list with while loop: ")
+#using while loop lets use len() again to list amount of items in list but we also have to have variable that starts from the beginning
+i = 0
+while i < len(mylist):
+   print(mylist[i])
+   i = i + 1
+#here we first set variable i to 0 and while the value of i is less than the lenght of the list index which is 6 in this case while loop keeps printing
+#the list until it reaches the point where i >= lenght of the list because the statement does not fullfill anymore. so each time while loops we add 1 to i
+#until it the statemet does not work anymore
+
+print("looping list with list comprehension: ")
+#list comprehension loop is shorter version of the for loop method that prints all items in list, it works like this:
+[print(x) for x in mylist]
+#i'd say that list comprehension is useful to make oneliners. so these things are same thing but without list comprehension and with
+print("creating list animals withour and with list comprehension: ")
+
+animals = ["dog", "cat", "bear", "fish", "tiger"]
+newanimals = []
+
+for x in animals:
+   if "i" in x:
+      newanimals.append(x)
+
+print(newanimals)
+
+#with list comprehension
+foods = ["spaghetti", "carbonara", "soup", "pizza", "hamburger"]
+newfoods = [x for x in foods if "i" in x] #so here newfoods list = x and we for loop x in foods list and if letter "i" is in the x (looped foods items) it is the x in newfoods list
+
+print(newfoods)
+#note comprehension is more efficient also in bytelevel because python does not need to roll through append for every time. here it is just automatically added in new list x value if it passes the statement
+#can use other operatos aswell in the statemnt for example [x for x in foods if x != "spaghetti"] here all other than spaghetti will be added to new list
+#also obviously dont need to have statements in the oneliner, can just create newlist from existin one with newlist = [x for x in oldlist]
+
+rangelist = [x for x in range(10)]
+print(rangelist)
+
+rangelist2 = [x for x in range(10) if x < 5] #adds numbers in range to list if they are less than 5
+print(rangelist2)
+
+#we can do pretty much anything with the values for the new lists with comprehensions
+foods2 = [x.upper() for x in foods] #here we just make uppcase letters list from the foods list
+print(foods2)
+
+foods3 = ["food" for x in foods] #here we make all items from foods list to say "food" in this new list
+print(foods3)
+
+foods4 = [x if x != "soup" else "stew" for x in foods] # here we manipulate the list to return stew instead of soup from the list foods to this new list
+print(foods4)
+
+print("Sorting lists: ")
+#lists can be sorted using sort() method
+foods.sort()
+print(foods)
+numberslist = [900, 699, 10, 65, 99, 49, 3, 0] #works with numbers aswell
+numberslist.sort()
+print(numberslist)
+
+#and if we want sort in reverse order use reverse = True
+numberslist.sort(reverse = True)
+print(numberslist)
+
+def numbersfunc(n): #in this function we set variable n and return rule to closest to 50 then we sort using keyword argument and this function
+   return abs(n - 50)
+
+numberslist.sort(key = numbersfunc)
+print(numberslist)
+
+#note sortihg list that has case sensitive values the sort itself sorts capital letters first then lower but this can be fixed using key function
+casesensitivelist = ["Beta", "alfa", "foxtrot", "Charlie", "Echo"]
+casesensitivelist.sort()
+print(casesensitivelist)
+
+casesensitivelist.sort(key = str.lower) #str.lower does the trick
+print(casesensitivelist)
+
+casesensitivelist.reverse()
+print(casesensitivelist)
+
+print("COPYING LISTS \n")
+#note use copy() method to copy contents of a list rather than refering to another list or variable because those values can change and copied values will we changed aswell
+
+copiedlist = fruits.copy()
+print(copiedlist)
+#also using list() method will also copy the contents of pointed thing
+copiedlist2 = list(foods)
+print(copiedlist2)
+#also previously used slice operator can be used to copy items
+copiedlist3 = numberslist[:] #but we are not slicing anything here we are starting from the beginning and ending to numberslist end therefore we copy all
+print(copiedlist3)
+
+print("JOIN LISTS \n")
+#we can join or concatenate lists for example
+joinlistx = ["a", "b", "c", "d"]
+joinlisty = [1, 2, 3, 4, 5]
+joinlist = joinlistx + joinlisty
+print(joinlist)
+
+#using append to join lists
+for x in joinlisty:
+   joinlistx.append(x)
+
+print(joinlistx)
+
+joinlistx.extend(joinlisty) #extend also can be used to concatenate lists
+print(joinlistx)
+
+"""
+list of build-in methods we just used in lists
+append()	Adds an element at the end of the list
+clear()	Removes all the elements from the list
+copy()	Returns a copy of the list
+count()	Returns the number of elements with the specified value
+extend()	Add the elements of a list (or any iterable), to the end of the current list
+index()	Returns the index of the first element with the specified value
+insert()	Adds an element at the specified position
+pop()	Removes the element at the specified position
+remove()	Removes the item with the specified value
+reverse()	Reverses the order of the list
+sort()	Sorts the list
+"""
+
+print("\n TUPLES \n")
+#tuples are similiar to lists and has pretty much same funtions as lists but they differ that tuples are collection of items which are ordered and unchanheable
+#unlike lists are changeable
+#same index numbering, allows duplicate values inside tuple
+numbertuple = (14, 16, 90, 504)
+print(len(numbertuple)) #len() method prints amount of indexes
+#tuples can also contain any datatypes
+print(type(numbertuple)) #tuple is its own datatype
+fruittuple = tuple(("orange", "apple", "cherry"))
+print(fruittuple) #like lists you can use tuple() constructor to create new tuple
+#note since tuples are unchageable it means contains of tuple can not be changed like removing or adding.
+#same as in lists we can use keyword in to check is something is present
+if "apple" in fruittuple:
+   print("Yes 'apple' is in fruittuple")
+
+print("\n Tuple workarounds \n") 
+
+y = list(fruittuple) #converting tuple in to a list and adding value to it and then converting list back to tuple
+y[1] = "kiwi"
+y.append("melon")  #append adds end of the list
+fruittuple = tuple(y)
+
+print(fruittuple)
+#can also add tuples to tuples basically we are not adding values in tuple. we are just adding tuple to another tuple
+z = ("starberry",)
+fruittuple += z
+print(fruittuple)
+#removing items from tuple is not possible without workaround like converting to list and then removing
+y = list(fruittuple)
+y.remove("orange")
+fruittuple = tuple(y)
+print(fruittuple)
+#deleting tuples work similiar to lists just use del keyword like this: del fruittuple <- deletes fruittuple
+print("\n packing and unpacking tuples \n")
+#packing and unpavking works siliar to list
+#packing is basically giving values for tuple
+tuplepack = ("cheese", "cucumber", "tomato") #packing
+
+(yellow, green, red) = tuplepack #this is unpacking. we are assigning containts of tuple to variables yellow greeen adn red
+print(yellow)
+print(green)
+print(red)
+
+print("\n more containts in tuple than assigned variables use asterisk* ")
+tuplepack2 = ("cheese", "cucumber", "tomato", "bread", "garlic")
+
+(yellow, green, *red) = tuplepack2 #if there is more items in tuple than you have variables to assign use asterisk* to set rest of the values to variable
+print(yellow)
+print(green)
+print(red)
+#you can also give asterisk to lets say green in this case -> then first item goes to first variable yellow and last item goes to last variable red. rest is automatically on green now
+print("\n looping through tuples\n")
+#looping works same as in list
+for x in fruittuple:
+   print(x)
+
+print("\n using range and len looping through index numbers\n")
+#same goes for range() and len() if you want loop through index numbers
+for i in range(len(fruittuple)):
+   print(fruittuple[i])
+
+print("\n looping with while loop")
+i = 0
+while i < len(fruittuple):
+   print(fruittuple[i])
+   i = i + 1
+
+print("\n Join tuples similiar to lists before \n")
+tuple1 = ("a", "b", "c")
+tuple2 = (1, 2 ,3)
+
+newtuple = tuple1 + tuple2
+print(newtuple)
+#you can multiply contents of tuple just with * operator
+multiplytuple = tuple1 * 2
+print(multiplytuple)
+
+print("tuple build-in methods")
+countingtuple = (1, 3, 5, 6, 7, 6, 5, 3, 2, 5, 7, 9)
+x = countingtuple.count(5) #with this count() method we can check occurances that how many times number 5 appears in this tuple
+print(x)
+
+indextuple = (1, 3, 5, 2 ,3 ,2 ,7 ,8 ,6 ,5, 9)
+x = indextuple.index(2) #with index() method you can check the first occurance of value and check its index in tuple
+print(x)
+
