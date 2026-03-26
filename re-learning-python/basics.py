@@ -694,3 +694,184 @@ indextuple = (1, 3, 5, 2 ,3 ,2 ,7 ,8 ,6 ,5, 9)
 x = indextuple.index(2) #with index() method you can check the first occurance of value and check its index in tuple
 print(x)
 
+print("\n SETS \n")
+
+#sets are anoteher collection of data like lists and tuples. what differs is that set items are unchageable, unordered and unindexed
+#note YOU CAN ADD AND REMOVE ITEMS FROM SET
+#sets are written with curly brackets {}, list [], tuple ()
+fruitset = {"apple", "banana", "kiwi"}
+print(fruitset)
+#since sets are unordered you cant be sure in which order items will show. they can show different order each time.
+#sets also cant be referred by index or key since they are unindexed
+#sets also ignore duplicate values because it cant have two same values
+dupset = {"apple", "apple", True, 1, False, 0, 2}
+print(dupset)
+#as we can see set sees True and number 1 as same value therefore it does not print it since it is duplicate value same goes with False and 0
+print(len(dupset)) #len prints only the amount set has so duplicates are not counted
+
+constructedset = set(("gorilla", "cheetah", "walrus"))
+print(constructedset)
+print(type(constructedset))
+#set can be constructed using set() method like tuples and lists also set itself is also datatype
+
+for x in fruitset:
+   print(x)
+#looping works similiar to other lists and tuples
+
+print("apple" in fruitset)
+#also can use in and not in methods to check if set contains that item. you cant use indexes
+print("kiwi" not in fruitset)
+print("\n adding items in set \n")
+
+#can add items in set just by using add() method
+fruitset.add("orange")
+print(fruitset)
+
+#if oyu want to add items from another set into your set you can use update() method
+addset = {"strawberry", "mango", "lingonberry"}
+
+fruitset.update(addset)
+print(fruitset)
+#note you can use update() method to add items to set from any onther iterable objects like lists, tuples, dictionaries
+#fruitset.update(fruitlist)
+print("\n removing items from set \n")
+fruitset.remove("mango")
+print(fruitset)
+#removinh items that does not exist in set gives error
+#but if you use discard() method it does not give error if the item does not exist in set
+fruitset.discard("lingonberry")
+print(fruitset)
+#if you decide using pop() method it will remove random item because you cant specify by index and items are unordered in sets
+#clear() method works the same like in lists and tuplese -> removes all items from the set
+#and del keyword can be used to delete the set -> del fruitset
+print("\n looping throgh set gives random order because set is unordeder. \n")
+for x in fruitset:
+   print(x)
+
+print("\n join sets \n")
+set1 = {"a", "b", "c"}
+set2 = {1, 2, 3, 4}
+
+set3 = set1.union(set2)
+print(set3)
+#union() method does the same as we before used + operator to add list1 to list2
+set4 = set1 | set2 #the '|' operator can also be used to join sets and it gives the same result
+print(set4)
+#both methods works and you can add as many as you want jointset = set1.union(set2, set3, set,4 etc.)
+#or just keep piping with | operator like joinset = set1 | set2 | set3 |set4 etc.
+#can also join different datatypes together but then you must use union() method because '|' operator only allows you to combine sets to sets
+
+#even though sets are unchangeable we still can add contents in set from other sets with update() method
+set1.update(set2)
+print(set1)
+#update method excludes duplicates aswell but with intersection() method you can keep ONLY duplcates
+duplicset1 = {"apple", "banana", "orange"}
+duplicset2 = {"apple", "banana", "kiwi"}
+duplicsetresult = duplicset1.intersection(duplicset2)
+print(duplicsetresult)
+
+#or just use & operator. it does the same thing except with & operator you can only join sets with sets
+duplicsetresult2 = duplicset1 & duplicset2
+print(duplicsetresult2)
+#as before we made new set with only duplicate items. if we want to just use existing set and change values to duplicate only with another set we can use
+#intersection_update() method
+duplicset1.intersection_update(duplicset2)
+print(duplicset1)
+#note if you have integers 1 and 0 values and bool values True or False those are concidered as duplicates and they will be included in your set then
+#but i think True and False values goes to set over 1 and 0
+
+# then there is difference() method that keeps items on set that are not presetn in the other set
+diffset1 = {"apple", "banana", "kiwi"}
+diffset2 = {"apple", "mango", "pineapple"}
+diffsetresult = diffset1.difference(diffset2)
+print(diffsetresult) #prints kiwi and banana
+# - operator works similiar but again can be used only set - set situation
+#then similiar to intersection_update() we can use difference_update() updates the chosen set instead of creating new set for difference
+#diffset1.difference_update(diffset2)
+#print(diffset1)
+
+#symmetric_difference() method keeps only items that are not present in both sets
+symdiffset = diffset1.symmetric_difference(diffset2)
+print(symdiffset) #in these sets only apple is same in both sets so it prints banana,kiwi,mango and pineapple
+# ^ operator does same thing and again can assume that it works only with set on set action
+symdiffset2 = diffset1 ^ diffset2
+print(symdiffset2)
+# and same as before symmetric_difference_update() you can just update the set with another sets items instead of making new set
+diffset1.symmetric_difference_update(diffset2)
+print(diffset1)
+
+print("\n FROZENSET \n")
+
+#frozenset() is same as set BUT you can NOT add or remove items in frozenset()
+#can make frozenset with constructor
+froznset = frozenset({"apple", "banana", "cherry"})
+print(froznset)
+print(type(froznset))
+
+#frozen set has some methods even though yo ucant add or remove elemets from it
+frset = frozenset({1, 2, 3})
+frset2 = frozenset({2, 3, 5, 6})
+copyset = frset.copy()
+print(frset)
+print(copyset)
+
+#difference and intersection works in frozensets aswell
+print(frset.difference(frset2))
+#or with - method
+print(frset - frset2)
+
+print(frset.intersection(frset2))
+#there is also method that returns true or false if two frozensets have intersection -> isdisjoint()
+print(frset.isdisjoint(frset2))
+
+#then there is supset or superset checks if the frozenset is subset of another set or superset another -> <=, >=
+print(frset.issubset(frset2))
+#or
+print(frset <= frset2) #or just use <
+#or superset check
+print(frset.issuperset(frset2))
+#or
+print(frset >= frset2) #or >
+#symmetric_difference() works same as before can be used in frozensets too and same with union() method
+
+"""
+here is list of the methods in sets that we went through:
+add()	 	Adds an element to the set
+clear()	 	Removes all the elements from the set
+copy()	 	Returns a copy of the set
+difference()	-	Returns a set containing the difference between two or more sets
+difference_update()	-=	Removes the items in this set that are also included in another, specified set
+discard()	 	Remove the specified item
+intersection()	&	Returns a set, that is the intersection of two other sets
+intersection_update()	&=	Removes the items in this set that are not present in other, specified set(s)
+isdisjoint()	 	Returns whether two sets have a intersection or not
+issubset()	<=	Returns True if all items of this set is present in another set
+ 	<	Returns True if all items of this set is present in another, larger set
+issuperset()	>=	Returns True if all items of another set is present in this set
+ 	>	Returns True if all items of another, smaller set is present in this set
+pop()	 	Removes an element from the set
+remove()	 	Removes the specified element
+symmetric_difference()	^	Returns a set with the symmetric differences of two sets
+symmetric_difference_update()	^=	Inserts the symmetric differences from this set and another
+union()	|	Return a set containing the union of sets
+update()	|=	Update the set with the union of this set and others
+"""
+print("\n DICTIONARIES \n")
+
+mydict = {
+   "brand": "Volvo",
+   "model": "V60",
+   "year": 2020,
+   "year": 2025, #if you have duplicates last duplicate will overwrite the previous one like in this case year will be 2025
+   "colors": ["grey", "white", "red", "green"]
+}
+#dictionaries use key:value pairs they are ordered, changeable and do not allow duplicates it differs from lists so you can refer to key to get the value
+print(mydict["brand"])
+print(mydict)
+print(len(mydict))
+print(type(mydict))
+#dictionaries support any datatype and can contain lists
+
+#dicttionary can be made by using constructor dict()
+newdict = dict(name = "John", age = 66, country = "Albania")
+print(newdict)
