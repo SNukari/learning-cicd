@@ -897,3 +897,43 @@ if "brand" in mydict:
 
 #also as we checked keys and values we can do that also with get() method
 print(mydict.get("brand"))
+
+#we can chanve values in dictionary with mydict[key] = newvalue or with update() method
+mydict.update({"year": 2022})
+print(mydict)
+
+#if we want we can add items to dictionary just by giving new key and value to it like mydict["type"] = "sedan"
+mydict["type"] = "sedan"
+print(mydict)
+#then we can revmove items just like in lists and sets with pop() method
+mydict.pop("type")
+print(mydict)
+#and popitem() if you want to remove latest added item in the dictionary: mydict.popitem()
+#then we can use del keyword to delete either specific item like: del mydict["model"] or if you want to remove whose dictionary use del mydict
+#and if you want to empty the dictionarys contents use .clear() method just like in lists and sets
+print("\n looping through dictionaries \n")
+#we can loop through dictionary with for loop like we did in lists and tuples
+for x in mydict:
+   print(x)
+#as we can see this loops through only keys of the dictionry. if we want to loop through values   lets print values
+for x in mydict:
+   print(mydict[x])
+#or alternatively use values() method to loop through values
+for x in mydict.values():
+   print(x)
+#same works with keys() method
+for x in mydict.keys():
+   print(x)
+#and if we want to get both keys and values use items() method
+print("\n loop keys and values with items method \n")
+for x, y in mydict.items():
+   print(x, y)
+
+print("\n copying dictionaries \n")
+#same as in lists we can copy dicts with copy() method or constructor dict()
+copydict = mydict.copy()
+print(copydict)
+copydict2 = dict(mydict)
+print(copydict2)
+
+print("\n nested dictionaries \n")
