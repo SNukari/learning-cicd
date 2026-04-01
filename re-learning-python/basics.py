@@ -866,7 +866,7 @@ mydict = {
    "colors": ["grey", "white", "red", "green"]
 }
 #dictionaries use key:value pairs they are ordered, changeable and do not allow duplicates it differs from lists so you can refer to key to get the value
-print(mydict["brand"])
+print(mydict["brand"]) #with key "brand we cet get the value which in this casi is "Volvo"
 print(mydict)
 print(len(mydict))
 print(type(mydict))
@@ -875,3 +875,25 @@ print(type(mydict))
 #dicttionary can be made by using constructor dict()
 newdict = dict(name = "John", age = 66, country = "Albania")
 print(newdict)
+# dictionaries are ordered and changeable
+#we can use keys() method to get all key values in dictionary
+x = mydict.keys()
+print(x)
+mydict["horsepower"] = 165 #we can add new key value pairs
+print(x)
+#just like getting all keys we can get all values of the keys using values() method
+x = mydict.values()
+print(x)
+mydict["horsepower"] = 195
+print(x) #obviously if we change the key:valu pair printed values wil change aswell
+
+#if we want to get all info from dictionary we can use items() method to get all key:value pairs
+x = mydict.items()
+print(x)
+
+#and just like in lists and tuples we can check if certain value is in the dictionary with in and not in methods
+if "brand" in mydict:
+   print("yup 'brand' is in mydict")
+
+#also as we checked keys and values we can do that also with get() method
+print(mydict.get("brand"))
