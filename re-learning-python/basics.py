@@ -937,3 +937,254 @@ copydict2 = dict(mydict)
 print(copydict2)
 
 print("\n nested dictionaries \n")
+
+mypets = {
+   "dog1": {
+      "name": "Rex",
+      "age": 7
+   },
+   "dog2": {
+      "name": "Max",
+      "age": 3
+   },
+   "cat1": {
+      "name": "Whiskers",
+      "age": 15
+   },
+   "cat2": {
+      "name": "Mittens",
+      "age": 6
+   }
+}
+print(mypets)
+#or you can make own dictionary for each pet and then make new dictionary like mypets = {"dog1": dog1, "dog2": dog2, "cat1": cat1, "cat2": cat2}
+print(mypets["cat1"]["name"]) #we can access items from nested dictionary by refering their keys
+
+#to loop through nested dictionary we need firstly loop through main dictionary and then loop through the nested dictionary to get the values
+
+for x, obj in mypets.items():
+   print(x)
+
+   for y in obj:
+      print(y + ':', obj[y])
+
+"""
+reminder list of the methods we went through:
+clear()	Removes all the elements from the dictionary
+copy()	Returns a copy of the dictionary
+fromkeys()	Returns a dictionary with the specified keys and value
+get()	Returns the value of the specified key
+items()	Returns a list containing a tuple for each key value pair
+keys()	Returns a list containing the dictionary's keys
+pop()	Removes the element with the specified key
+popitem()	Removes the last inserted key-value pair
+setdefault()	Returns the value of the specified key. If the key does not exist: insert the key, with the specified value
+update()	Updates the dictionary with the specified key-value pairs
+values()	Returns a list of all the values in the dictionary"""
+
+print("\n IF STATEMENTS \n")
+
+#if statemets work similar to other languages. statements has same conditional statements and logical operators like:
+"""
+Equals: a == b
+Not Equals: a != b
+Less than: a < b
+Less than or equal to: a <= b
+Greater than: a > b
+Greater than or equal to: a >= b
+and: a and b
+or: a or b
+not: not a
+"""
+a = 5
+b = 15
+if b > a:
+   print("b is greater than a")
+
+variable = 5
+if variable > 0:
+   print("variable is positive")
+#note remainder again. you must have whitespace in python after the statement on the next line in order for it to work. since python does not use for example curly brackets like in other languages
+
+#if statements also works with bool values
+somethingbefore = True
+if somethingbefore:
+   print("statement is true and you see this text")
+
+#note in if statements if the value is 0, empty or None the statement sees this as False and there the if statement does not fullfill and it skips the codeblock.
+
+#Use elif when you have multiple mutually exclusive conditions to check.
+#This is more efficient than using multiple separate if statements because Python stops checking once it finds a true condition.
+day = 3
+
+if day == 1:
+  print("Monday")
+elif day == 2:
+  print("Tuesday")
+elif day == 3:
+  print("Wednesday")
+elif day == 4:
+  print("Thursday")
+elif day == 5:
+  print("Friday")
+elif day == 6:
+  print("Saturday")
+elif day == 7:
+  print("Sunday")
+
+#The else keyword catches anything which isn't caught by the preceding conditions.
+#The else statement is executed when the if condition (and any elif conditions) evaluate to False
+username = "Emil"
+
+if len(username) > 0:
+  print(f"Welcome, {username}!")
+else:
+  print("Error: Username cannot be empty")
+#note you can also make oneliner if statemnts:
+x = 15
+y = 20
+max_value = x if x > y else y
+print("Maximum value:", max_value)
+
+a = 100
+b = 50
+c = 400
+if a > b and c > a:
+   print("a is greater than b AND c that is why you see this and operator text")
+
+if a > b or a > c:
+   print("a is greater than b OR c you see this because atleast one condition is true")
+
+if not b > a:
+   print("b is not greater than a but reversed statemnt with NOT makes this true and you see this text")
+
+username = "Tobias"
+password = "secret123"
+is_verified = True
+
+if username and password and is_verified:
+  print("Login successful")
+else:
+  print("Login failed")
+
+#you can have nested if statements aswell. so if the statement is true you can nest another if statement inside the first one and if that is true then something happens
+age = 25
+if age >= 18:
+   print("you are an adult")
+   if age >= 70:
+      print("you are a senior citizen")
+else:
+   print("you are a minor")
+
+
+username = "Emil"
+password = "python123"
+is_active = True
+
+if username:
+  if password:
+    if is_active:
+      print("Login successful")
+    else:
+      print("Account is not active")
+  else:
+    print("Password required")
+else:
+  print("Username required")
+
+#if statement cannot be empty after valid true statement. if you do not have any code to execute in if statement you can use pass keyword to avoid error
+if True:
+   pass
+#pass is null placeholder that does nothing but is correct syntax
+"""The pass statement is useful in several situations:
+
+When you're creating code structure but haven't implemented the logic yet
+When a statement is required syntactically but no action is needed
+As a placeholder for future code during development
+In empty functions or classes that you plan to implement later"""
+
+value = 50
+
+if value < 0:
+  print("Negative value")
+elif value == 0:
+  pass # Zero case - no action needed
+else:
+  print("Positive value")
+
+
+def calculate_discount(price):
+  pass #TODO: Implement discount logic
+
+# Function exists but doesn't do anything yet
+
+print("\n MATCH STATEMENTS \n")
+
+#match statements are similiar to switch case statements in other languages. The match statement selects one of many code blocks to be executed. 
+#The match expression is evaluated once. The value of the expression is compared with the values of each case.
+#If there is a match, the associated block of code is executed.
+day = 4
+match day:
+  case 1:
+    print("Monday")
+  case 2:
+    print("Tuesday")
+  case 3:
+    print("Wednesday")
+  case 4:
+    print("Thursday")
+  case 5:
+    print("Friday")
+  case 6:
+    print("Saturday")
+  case 7:
+    print("Sunday")
+  case _:
+      print("Invalid day")
+#The case _: is similisr to else statement in if statements. it is executed when there is no match with any other cases.
+
+#you can also have multiple operations in one case to check multiple values and extra conditions
+month = 5
+day = 4
+match day:
+  case 1 | 2 | 3 | 4 | 5 if month == 4:
+    print("A weekday in April")
+  case 1 | 2 | 3 | 4 | 5 if month == 5:
+    print("A weekday in May")
+  case _:
+    print("No match")
+
+print("\n WHILE LOOPS \n")
+
+#while loops are used to execute a block of code as long as the specified condition is true.
+#useful when you want to repeat an action until a certain condition is met, such as waiting for user input, processing data until a specific value is reached
+#or creating loops that run indefinitely until a certain event occurs.
+i = 1
+while i < 6:
+   print(i)
+   i += 1
+
+print(" ")
+#this adds 1 to i variable each time while loops to a point where i is no longer less than 6 and the statements does not fullfill anymore and loop stops.
+#you can always stop the loop with break statement
+i = 1
+while i < 6:
+   print(i)
+   if i == 3:
+      break
+   i += 1
+ #this loop stops when i is 3
+print(" ")
+#contiue statement stops current iteration and continues with next one
+i = 0
+while i < 6:
+   i += 1
+   if i == 3:
+     continue
+   print(i)
+#this loop skips number 3 and continues with 4,5,6
+else:
+   print("i is no longer less than 6")
+#else works same as in if statements. it is executed when wile loop is no longer true. else will not be executed if loop stops with break statement.
+
+print("\n FOR LOOPS \n")
