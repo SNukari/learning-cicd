@@ -1188,3 +1188,233 @@ else:
 #else works same as in if statements. it is executed when wile loop is no longer true. else will not be executed if loop stops with break statement.
 
 print("\n FOR LOOPS \n")
+#for loops are used to iterate over a sequence (like list, tuple, set or string)
+#in python for loops are more like foreach loops in other languages. iterates through items of sequence rather than using index numbers like in other languages.
+#executing set of statements once for each item in sequence
+fruits = ["apple", "banana", "cherry"]
+for x in fruits:
+   print(x)
+
+#looping througg string characters
+for x in "banana":
+   print(x)
+
+#stopping for loop with break statement
+for x in fruits:
+   print(x)
+   if x == "banana":
+      break
+
+#if we print after break
+for x in fruits:
+   if x == "banana":
+      break
+   print(x)
+#should print only apple because reaching banana stops the loop and it does not print banana or cherry
+
+#just like before we can use continue statement to skip current iteration and continue with next one
+for x in fruits:
+   if x == "banana":
+      continue
+   print(x)
+#should print apple and cherry
+print(" ")
+#range() function returns sequence of numbers. to loop through set of code specified number of times can use range like this
+for x in range(6):
+   print(x)
+#this will print numbers from 0-5
+#adding secified parameter
+print(" ")
+for x in range(2, 6):
+   print(x)
+
+#by default range() increments by 1 but it can be changed with third parameter step. lets increment by 3
+print(" ")
+for x in range(2, 30, 3):
+   print(x)
+else:
+   print("Done!")
+#else is executed when loop has finished iterating through all items.
+print(" ")
+for x in range(6):
+   if x == 3:
+      break
+   print(x)
+else:
+   print("Done again")
+#else does not execute if loop is stopped with break
+print("\n Nesting loops with for")
+#for loops can be nested inside each other
+adj = ["red", "big", "tasty"]
+
+for x in adj:
+   for y in fruits:
+      print(x, y)
+# so here what happens is first loop goes through first item in adj list "red" and then inner loop loops through all items in fruits list
+#then first loop goes to next item in adj list "big" and inner loop goes again through all items in fruits list and so on until all items in adj are looped through
+
+#same as before with empty loop we can use pass statement to avoid error. pass can be used as placeholder when you have code structure but not logic yet
+for x in [0, 1, 2]:
+   pass
+
+print("\n FUNCTIONS \n")
+#functions are a block of code which only runs when it is called.
+#function can return data as a result
+#functions help avoiding code repetition
+def my_function():
+   print("hello this is my function")
+#remeber indentations
+my_function()
+my_function()
+my_function()
+
+#in python function names also has rules like variables. it must start with a letter or underscore and can't start with number
+#it can only contain letters,numbers and underscores and it is case sensitive
+print("\n without function")
+temp1 = 77
+celsius1 = (temp1 - 32) * 5 / 9
+print(celsius1)
+
+temp2 = 95
+celsius2 = (temp2 - 32) * 5 / 9
+print(celsius2)
+
+temp3 = 50
+celsius3 = (temp3 - 32) * 5 / 9
+print(celsius3)
+
+#same as but using function
+print("\n with function")
+def fahrenheit_to_celsius(fahrenheit):
+  return (fahrenheit - 32) * 5 / 9
+
+print(fahrenheit_to_celsius(77))
+print(fahrenheit_to_celsius(95))
+print(fahrenheit_to_celsius(50))
+
+#functions can send data to other functions or to the code using return statement. return statement is used to exit a function and go back to the place where it was called.
+#when a function is called, the execution of the program jumps to the functions code block and runs it
+#when the function finishes executing or reaches a return statement, the exectution jumps back to the place where the function was called and continues from there
+
+def get_greeting():
+  return "Hello from a function"
+
+message = get_greeting() #here we call the function get greeting and assign its return value to message variable then we print the message variable
+print(message)
+
+#or
+def get_greeting():
+  return "Hello from a function"
+
+print(get_greeting()) #here we call the function inside print statement and it prints the return value of the function
+
+#if function does not have return statement it will return none by default
+#and same with loops we can use pass statement in functions when we have no logic yet but want to avoid error
+def _empty_function():
+   pass
+
+print("\n function arguments \n")
+#information can be passed to functions as arguments. arguments are specified after the function name in parentheses. there can be as many arguments as you want just seperate them with commas.
+def greet(name): #name is a parameter
+   print(f"Hello, {name}!")
+
+greet("Alice") #"alice" is and argument that we pass to the function parameter name
+greet("Bob")
+greet("Charlie")
+#here we have greet function that takes one argument name and prints a greeting message with assigned name that we give when we call the function
+
+#you can also have multiple parameters in function
+def greetings(fname, lname):
+   print(fname + " " + lname)
+
+greetings("John", "Doe")
+#if you try to call funtion with only one argument it will give error because there are two parameters in function definition and you MUST give two arguments
+
+#you can also assigne default value for parameters so if you call funtion without giving argument it will use default value instead
+def greet(name = "Guest"):
+   print("Hello", name)
+
+greet("Alice")
+greet()
+greet("Leon")
+
+#can also send arguments with key = value syntax.
+def my_function(animal, name):
+  print("I have a", animal)
+  print("My", animal + "'s name is", name)
+
+my_function(animal = "dog", name = "Buddy")
+my_function(name = "Squeex", animal = "rat") # order of the arguments does not matter as long as it matches parameter names
+#note keyword arguments = kwargs are used when you want to pass variable number of arguments to a function.
+ #When you call a function with arguments without using keywords, they are called positional arguments. Positional arguments must be in the correct order
+
+def animals(animal, name):
+   print("I have a", animal)
+   print("My", animal + "'s name is", name)
+
+animals("cat", "Whiskers") #postional arguments -> order matters
+animals(name = "whiskers", animal = "cat") #keyword arguments -> order does not matter
+animals("dog", name = "buddy") #can also mix positionals and keywords but positionals must come before keywords
+
+#arguments can be any datatype -> list, sting, number, dictionary etc.
+def my_function(food):
+   for x in food:
+      print(x)
+
+my_food = ["lasagna", "pizza", "tortilla"]
+my_function(my_food) #here we pass list as argument to function and it loops through the list
+
+def my_function(person):
+  print("Name:", person["name"])
+  print("Age:", person["age"])
+
+my_person = {"name": "Emil", "age": 25}
+my_function(my_person) #here we pass dictionary as argument to function
+
+#functions can return values
+def my_function(x, y):
+   return x + y
+result = my_function(5, 10)
+print(result)
+#as we learned earlier with return statement. when function is called it jumps to the code block of the function and runs until it reaches return statement
+#and brings the value back to place where function was called and continues from there.
+#here we have function that takes two parameters x and y and returns their sum. then we call the function on result variable and print the result of the given arguments.
+
+def my_function():
+  return ["apple", "banana", "cherry"]
+
+fruits = my_function()
+print(fruits[0])
+print(fruits[1])
+print(fruits[2])
+#return can return any datatype. here is list and we can access its items with index numbers
+
+def my_function():
+  return (10, 20)
+
+x, y = my_function()
+print("x:", x)
+print("y:", y)
+#tuple
+
+print("\n positional only arguments")
+
+def greet(name, /):
+   print("hello", name)
+greet("alice")
+#so positional only arguments are defined with / symbol in function definition. this denies use of keyword arguments when calling the function.
+#usefule when you want to make sure that arguments are passed in correct order and not with keywords. if you try to call function with keyword arg it gives error
+#greet(name = "alice") gives error in this case
+
+#if you want function work other way around that only keyword arguments are allowed you can use *, symbol
+def greet(*, name):
+   print("hello", name)
+greet(name = "Alice")
+#greet("Alice") gives error because function is defined with * and it only allows keyword arguments
+
+#they can be combined as well if you want to have some positional only and some keyword only arguments
+def greet(positional, /, *, keyword):
+   print("hello", positional, "and", keyword)
+greet("Alice", keyword = "Bob")
+
+print("\n *args and **kwargs \n")
